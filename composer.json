@@ -1,0 +1,16 @@
+{
+    "name": "brettanda/portfolio-theme",
+    "type": "wordpress-theme",
+    "authors":[
+        {
+            "name": "Brett Anda",
+            "email": "brettanda12@gmail.com"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.6"
+    },
+    "config": {
+    	"optimize-autoloader": true
+    }
+}

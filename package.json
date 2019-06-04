@@ -1,0 +1,39 @@
+{
+	"name": "ba-portfolio-theme",
+	"version": "1.0.0",
+	"homepage": "https://brettanda.ca",
+	"repository": "brettanda/ba-portfolio-theme",
+	"license": "CC-BY-4.0",
+	"description": "My portfolios theme",
+	"author": "Brett Anda <brettanda12@gmail.com>",
+	"scripts": {
+		"start": "webpack --watch --mode=development --progress --config=webpack.config.js --colors --hide-modules",
+		"build": "webpack --mode=production --progress --config=webpack.config.js --colors --hide-modules",
+		"test": "./node_modules/.bin/babel src --out-dir lib --presets=@babel/env"
+	},
+	"dependencies": {
+		"animejs": "^3.0.1",
+		"jquery": "^3.4.1",
+		"normalize.css": "^8.0.0",
+		"rellax": "^1.9.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.4.5",
+		"@babel/preset-env": "^7.4.5",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^8.0.6",
+		"babel-preset-env": "^1.7.0",
+		"css-loader": "^2.1.1",
+		"fs": "^0.0.1-security",
+		"ftp-deploy": "^2.3.3",
+		"mini-css-extract-plugin": "^0.7.0",
+		"node-sass": "^4.12.0",
+		"optimize-css-assets-webpack-plugin": "^5.0.1",
+		"sass-loader": "^7.1.0",
+		"style-loader": "^0.23.1",
+		"terser-webpack-plugin": "^1.3.0",
+		"uglifyjs-webpack-plugin": "^2.1.3",
+		"webpack": "^4.32.2",
+		"webpack-cli": "^3.3.2"
+	}
+}

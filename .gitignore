@@ -1,0 +1,11 @@
+vendor/
+._*
+node_modules/
+*.sql
+old_*
+*.lock
+*-lock.json
+*-error.log
+.sass-cache/
+.vscode/
+assets/compiled
