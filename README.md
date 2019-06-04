@@ -1,5 +1,6 @@
-# BA-WP
+# My portfolio theme
 **Author:** [Brett Anda](https://brettanda.ca/about-me/)
+**The attached site has not been deployed as of yet**
 ## Modules Used
 - [AnimeJS](https://animejs.com/)
 - [Rellax](https://dixonandmoe.com/rellax/)
@@ -18,7 +19,7 @@ composer install
 When you are coming back to edit a project run this:
 > If there are missing packages run this:
 ```
-yarn install
+yarn
 ```
 > Begins the SASS watch command
 ```
