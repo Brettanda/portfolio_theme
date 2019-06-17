@@ -1,15 +1,42 @@
-console.log("%c Welcome to the console","color:orange;font-weight:bold;text-transform:uppercase;");
+import anime from "animejs/lib/anime.js";
+import Rellax from "rellax/rellax";
+import sal from 'sal.js/dist/sal';
+let $ = window.jQuery;
+// Delighters had to be loaded in `functions.php`, it displayed errors when loaded here
 
-Delighters.config({
-    attribute: 'data-delighter',
-    classNames: ['delighter', 'started', 'ended'],
-    start: 1,
-    end: 1,
-    // let's call Delighters.init() manually later
-    autoInit: false ,
+console.log("%c Welcome to the console","color:orange;font-weight:bold;text-transform:uppercase;");
+// sal();
+sal({
+    threshold: 0.01,
+    once: false,
+    selector: "[data-sal]",
+    animateClassName: "sal-animate",
+    disabledClassName: "sal-disabled",
+    rootMargin: "0% 50%",
+    enterEventName: "sal:in",
+    exitEventName: "sal:out"
 });
 
-var rellax = new Rellax('.rellax', {
+// const element = document.querySelector('.sal-animated');
+
+// element.addEventListener('sal:in', ({ detail }) => {
+//   console.log('entering', detail.target);
+// });
+
+// document.addEventListener('sal:out', ({ detail }) => {
+//     console.log('exiting', detail.target);
+// });
+
+// Delighters.config({
+//     attribute: 'data-delighter',
+//     classNames: ['delighter', 'started', 'ended'],
+//     start: 1,
+//     end: 1,
+//     // let's call Delighters.init() manually later
+//     autoInit: false ,
+// });
+
+let rellax = new Rellax('.rellax', {
     speed: -2,
 });
 
@@ -55,10 +82,10 @@ var rellax = new Rellax('.rellax', {
 // });
 
 
-var $switch = $('.color-mode-switch');
-var $button = $('.color-mode');
-var $main = $('.main');
-var $pieces = $('.piece');
+let $switch = $('.color-mode-switch');
+let $button = $('.color-mode');
+let $main = $('.main');
+let $pieces = $('.piece');
 $pieces.addClass('color-mode-switch');
 
 $button.on('mouseenter',() => {
@@ -80,7 +107,7 @@ $button.on('mouseenter',() => {
 });
 
 
-// var $body = $(document.body);
+// let $body = $(document.body);
 // // const $all = $(document);
 // $('.color-mode').on('mouseenter', () => {
 //     $switch.removeClass('is-inactive');
@@ -111,24 +138,27 @@ $button.on('mouseenter',() => {
 
 
     //Adds delighter to every child element of the article__content on pages/singles
-    var $items = $('.article__content *');
-    for(var i = 0; i < $items.length; i++){
-        var $tg = $items[i].tagName.toLowerCase();
-        if($tg != "div" && $tg != "section" && $tg != "article" && $tg != "form") {
-            $items[i].setAttribute('data-delighter','');
+    // $(document).ready(() => {
+        let $items = $('.article__content *');
+        for(let i = 0; i < $items.length; i++){
+            let $tg = $items[i].tagName.toLowerCase();
+            if($tg != "div" && $tg != "section" && $tg != "article" && $tg != "form" /*&& (($tg != "p" || $tg != "span") && !$items[i].hasChildNodes()) && $tg != "br" */&& $items[i].getAttribute('type') != "submit") {
+                $items[i].setAttribute('data-sal','');
+            }
         }
-    }
-    // var items = $('.piece h2');
-    // for(var i = 0; i < items.length; i++){
-    //     var line = "";
-    //     for(var l = 0; l < items[i].innerHTML.split("").length; l++){
-    //         var item = items[i].innerHTML.split("")[l];
+    // });
+    // let items = $('.piece h2');
+    // for(let i = 0; i < items.length; i++){
+    //     let line = "";
+    //     for(let l = 0; l < items[i].innerHTML.split("").length; l++){
+    //         let item = items[i].innerHTML.split("")[l];
     //         item  = "<span data-delighter class='h2-letter'>" + item + "</span>";
     //         line += item;
     //     }
     //     items[i].innerHTML = line;
     // }
-    Delighters.init();
+    // Delighters.init();
+    sal();
     
     // anime({
     //     targets: 'body',
@@ -140,6 +170,8 @@ $button.on('mouseenter',() => {
     //         document.body.style.opacity = "1";
     //     }
     // });
+
+    
 
     // console.log(document.body.scrollTop,document.documentElement.scrollTop);
     if(document.body.scrollTop < 100 && document.documentElement.scrollTop < 100) {
@@ -158,20 +190,20 @@ $button.on('mouseenter',() => {
             delay: 500,
             easing: "easeInOutSine"
         });
-        var $size = "10rem";
+        let $size = "10rem";
         if($(document).width() < 1000) {
             $size = '5rem';
         }
-        anime({
-            targets: ".home > #site-header, #site-image, #overlay",
-            borderBottomRightRadius: [0,$size],
-            duration: 1000,
-            delay: 500,
-            easing: 'easeOutSine',
-            complete: function() {
-                $('.home > #site-header, #site-image, #overlay').css('border-bottom-right-radius',"");
-            }
-        });
+        // anime({
+        //     targets: ".home > #site-header, #site-image, #overlay",
+        //     borderBottomRightRadius: [0,$size],
+        //     duration: 1000,
+        //     delay: 500,
+        //     easing: 'easeOutSine',
+        //     complete: function() {
+        //         $('.home > #site-header, #site-image, #overlay').css('border-bottom-right-radius',"");
+        //     }
+        // });
     }
 
     anime({
@@ -219,29 +251,36 @@ $button.on('mouseenter',() => {
 
     // Adds the actual styles for the code blocks from wordpress
     if($('code')){
-        var codeBlocks = $('code');
-        for(var i = 0; i < codeBlocks.length; i++){
-            // var lines = $('textarea').val().split('\n');
-            var lines = codeBlocks[i].innerHTML.split('\n');
+        let codeBlocks = $('code');
+        for(let i = 0; i < codeBlocks.length; i++){
+            // let lines = $('textarea').val().split('\n');
+            let lines = codeBlocks[i].innerHTML.split('\n');
             codeBlocks[i].classList.add('code');
             codeBlocks[i].innerHTML = "<ol></ol>";
-            for(var l = 0; l < lines.length; l++){
-                var html = "<li class='code-line'>" + lines[l] + "</li>";
+            for(let l = 0; l < lines.length; l++){
+                let html = "<li class='code-line'>" + lines[l] + "</li>";
                 // html = colorCode(html,"C#");
                 codeBlocks[i].firstChild.innerHTML += html;
             }
         }
     }
 
-    var newTitle = "";
-    // var title = $("#site-title h1 a:last-of-type");
-    var title = document.querySelector("#site-title h1 a:last-of-type");
-    var oldTitle = Array.from(title.innerHTML);
-    for(var i = 0; i < oldTitle.length; i++) {
+    let newTitle = "";
+    // let title = $("#site-title h1 a:last-of-type");
+    let title = document.querySelector("#site-title h1 a:last-of-type");
+    let oldTitle = Array.from(title.innerHTML);
+    for(let i = 0; i < oldTitle.length; i++) {
+        if(i == 0) {
+            newTitle += "<span>";
+        }
         if(oldTitle[i] == " ") {
-            newTitle += "<span>&nbsp;</span>";
+            // newTitle += "<span>&nbsp;</span>";
+            newTitle += "</span><span>&nbsp;</span><span>"
         } else {
             newTitle += "<span>" + oldTitle[i] + "</span>";
+        }
+        if(i == oldTitle.length) {
+            newTitle += "</span>";
         }
     }
     title.innerHTML = newTitle;
@@ -254,7 +293,7 @@ $button.on('mouseenter',() => {
             opacity: [0,1],
             scale: [0.7,1],
             delay: anime.stagger(100, {start: 1000}),
-            translateX: ['-50px','0']
+            // translateX: ['-50px','0']
         });
     } else {
         anime({
@@ -263,7 +302,7 @@ $button.on('mouseenter',() => {
             easing: "spring(1, 90, 10, 0)",
             opacity: [0,1],
             delay: anime.stagger(50, {start: 800}),
-            translateX: ['-50px','0']
+            // translateX: ['-50px','0']
         });
     }
 
@@ -271,18 +310,18 @@ $button.on('mouseenter',() => {
 function colorCode(str, lang){
     if(lang == "C#"){
         // Something in between quotations ""
-        var string = "";
+        let string = "";
         if(str.indexOf('"') >= 0){
-            var last = 0;
-            var before = str.substring(0,str.indexOf('"'));
-            var x = 0;
-            for(var i = 0; i < str.length; i++){
+            let last = 0;
+            let before = str.substring(0,str.indexOf('"'));
+            let x = 0;
+            for(let i = 0; i < str.length; i++){
                 // console.log(i);
                 if(str.indexOf('"',i) > last){
                     x++;
 
                     // last = str.indexOf('"',i -1);
-                    var add = str.substring(last,str.indexOf('"',i) + 1);
+                    let add = str.substring(last,str.indexOf('"',i) + 1);
                     // console.log("To Add: " + add);
                     string = before + '<span style="color:darkorange;">' + add + '</span>';
                     console.log("Last: " + last + " I: " + i + " Iteration: " + x + " Last: " + last + " Before: %c \n" + before + "\n %c String: %c \n" + string,"color:red;","color: black;","color:green;");
@@ -295,7 +334,7 @@ function colorCode(str, lang){
                     }
 
                     if(str.lastIndexOf('"',str.length) === str.indexOf('"',i)){
-                        var after = str.substring(str.lastIndexOf('"') + 1,str.length);
+                        let after = str.substring(str.lastIndexOf('"') + 1,str.length);
                         string = string + after;
                         return string;
                     }
@@ -311,3 +350,27 @@ function colorCode(str, lang){
         return string;
     }
 }
+
+$(document).ready(() => {
+    fixedTop();
+    $(window).on("scroll", () => {
+        // console.log(document.documentElement.scrollTop);
+        fixedTop();
+    });
+
+    function fixedTop() {
+        if($(document.body).hasClass("home")) {
+            if(document.body.scrollTop > 685 || document.documentElement.scrollTop > 685) {
+                $("#header-menu").addClass("fixed-top");
+            } else {
+                $("#header-menu").removeClass("fixed-top");
+            }
+        } else {
+            if(document.body.scrollTop > 318 || document.documentElement.scrollTop > 318) {
+                $("#header-menu").addClass("fixed-top");
+            } else {
+                $("#header-menu").removeClass("fixed-top");
+            }
+        }
+    }
+});
