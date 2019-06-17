@@ -1,17 +1,9 @@
 const path = require('path');
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
-// const miniCssExtractPlugin = new MiniCssExtractPlugin({
-//   moduleFilename: ({ name }) => `${name.replace('/js/', '/css/')}.css`
-// });
-
-const WebpackFtpUpload = require('webpack-ftp-upload-plugin');
-
 const TerserJSPlugin = require('terser-webpack-plugin');
-
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
@@ -39,7 +31,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['babel-preset-env']
+            presets: ['@babel/preset-env']
           }
         }
       },
@@ -63,8 +55,22 @@ module.exports = {
           // 'style-loader',
         ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+              name: '[name].[ext]',
+              // outputPath: 'fonts/'
+          }
+        }]
+      }
     ]
   },
+  stats: {
+    colors: true
+  },
+  // devtool: 'source-map',
   externals: {
     jquery: 'jQuery'
   },
@@ -87,14 +93,6 @@ module.exports = {
         preset: ['default', { discardComments: { removeAll: true } }],
       },
       canPrint: true
-    }),
-    new WebpackFtpUpload({
-      host: 'pi.brettanda.ca',
-      port: '226',
-      username: 'pi',
-      password: '499136005',
-      local: path.join(__dirname, 'dist'),
-      path: '../../var/www/html/portfolio/wp-content/themes/brettanda',
-  })
+    })
   ],
 };

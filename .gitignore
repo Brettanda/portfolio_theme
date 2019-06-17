@@ -8,4 +8,4 @@ old_*
 *-error.log
 .sass-cache/
 .vscode/
-assets/compiled
+dist/

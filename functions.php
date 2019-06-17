@@ -20,6 +20,8 @@ add_theme_support( 'custom-header', array(
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' ); 
 
+// set_post_thumbnail_size( 150, 150 );
+// add_image_size( "Thumb", 1920, 1080, true );
 /*
 *
 *Load Assets

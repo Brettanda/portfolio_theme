@@ -6,7 +6,7 @@
 		$args = array('post_type' => 'projects','posts_per_page'=>-1,'orderby'=>'rand');
 		$loop = new WP_Query( $args );
 		if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post(); ?>
-		<a style="display:block;text-decoration:none;" class="piece" data-delighter href="<?php the_permalink(); ?>">
+		<a style="display:block;text-decoration:none;" class="piece" data-sal href="<?php the_permalink(); ?>">
 			<?php the_post_thumbnail('post-thumbnail',['class' => 'piece__img']); ?>
 			<header>
 				<h2><?php the_title(); ?></h2>

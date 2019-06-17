@@ -1,5 +1,8 @@
 <!-- https://developer.wordpress.org/reference/functions/bloginfo/ -->
 <!DOCTYPE html>
+<?php 
+// Enables gzip?
+//ob_start(“ob_gzhandler”); ?>
 <html lang="en">
 <head>
 <!-- #ff3a1e -->
@@ -17,7 +20,7 @@
  wp_head(); ?>
 </head>
 
-<body <?php body_class();?>>
+<body <?php body_class();?> data-instant-allow-external-links>
 	<!-- <div class="color-mode-switch is-inactive"></div> -->
 	<header id="site-header">
 	<div id="site-image">
@@ -122,8 +125,14 @@
 							'container' => 'nav',
 							'fallback_cb' => false,
 							'container_id' => 'header-menu',
+							// 'items_wrap'      => '<ul id="%1$s" asd class="%2$s">%3$s</ul>',
+							'depth' => 0,
+							// 'walker' => new description_walker()
+
 						));
 					}
+
+					
 				//}
 			?>
 		</div>
