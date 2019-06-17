@@ -17,12 +17,12 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
   entry: {
     // index: './assets/scripts/index.js',
-    script: ['./assets/scripts/scripts.js'],
-    style: ['./assets/styles/style.scss'],
+    script: ['./assets/src/scripts/scripts.js'],
+    style: ['./assets/src/styles/style.scss'],
   },
   output: {
     filename: '[name].min.js',
-    path: path.resolve(__dirname, 'assets/compiled')
+    path: path.resolve(__dirname, 'assets/dist')
   },
   node: {
     fs: 'empty',
@@ -51,7 +51,7 @@ module.exports = {
             options: {
               // you can specify a publicPath here
               // by default it uses publicPath in webpackOptions.output
-              publicPath: 'compile',
+              // publicPath: 'dist',
               hmr: process.env.NODE_ENV === 'development',
               // minimize: true,
               reloadAll: true,

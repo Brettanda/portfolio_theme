@@ -78,7 +78,7 @@ add_action('init','my_menus');
  * Inspired by Sage.
  */
 array_map(function ($file) use ($theme_error) {
-	$file = "/assets/functions/$file.php";
+	$file = "/assets/src/functions/$file.php";
 	if (!locate_template($file, true, true)) {
 			$theme_error(sprintf(__('Error locating <code>%s</code> for inclusion.', 'brettanda'), $file), 'File not found');
 	}

@@ -1,7 +1,7 @@
 <?php
 $choice = rand(1,3);
 if((!has_header_image() || get_theme_mod("header_switch") == 'none') && $choice == 1){
-	if(wp_is_mobile()){
+	if(!is_front_page()){
 		?>
 			<script>
 				function getRandom(min, max) {
@@ -79,8 +79,8 @@ if((!has_header_image() || get_theme_mod("header_switch") == 'none') && $choice 
 			requestAnimationFrame(drawBox);
 	</script><?php
 	}
-}else if($choice == 2 || $choice == 3){
-	if(wp_is_mobile()){
+}else if($choice == 2){
+	if(!is_front_page()){
 		?>
 		<script>
 			let context = backface.getContext('2d');
@@ -191,6 +191,141 @@ if((!has_header_image() || get_theme_mod("header_switch") == 'none') && $choice 
 			requestAnimationFrame(lines);
 		</script>
 		
+		<?php
+	}
+} else if($choice == 3){
+	if(!is_front_page()) {
+		?><script>
+		let context = backface.getContext("2d");
+		context.canvas.width = window.innerWidth;
+		context.canvas.height = window.innerHeight;
+
+		/*function resize(){
+		context.canvas.width = window.innerWidth;
+		context.canvas.height = window.innerHeight;
+		draw();
+		}
+		window.addEventListener("resize", resize,false);*/
+
+		function getRandom(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+		function getDist(x1, y1, x2, y2) {
+		return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+		}
+		var count = 2000,
+			protection = 0,
+			circles = [],
+			width = 3;
+		while (circles.length < count) {
+		var circle = {
+			x: getRandom(1, backface.width),
+			y: getRandom(1, backface.height),
+			r: getRandom(2, 100),
+			h: getRandom(1, 255),
+			s: getRandom(1, 5),
+			d: getRandom(1, 2)
+		};
+		var overLapping = false;
+		for (var j = 0; j < circles.length; j++) {
+			var other = circles[j];
+			var d = getDist(circle.x, circle.y, other.x, other.y);
+			if (d < circle.r + other.r + width) {
+			overLapping = true;
+			break;
+			}
+		}
+		if (!overLapping) {
+			circles.push(circle);
+		}
+		protection++;
+
+		if (protection > 200000) {
+			break;
+		}
+		}
+		var i = -1;
+		function draw() {
+		i++;
+		if(i<circles.length){
+			context.beginPath();
+			context.arc(circles[i].x, circles[i].y, circles[i].r, 0, 2 * Math.PI);
+			context.lineWidth = width;
+			context.fillStyle = `hsl(${circles[i].h},100%,50%)`;
+			context.fill();
+			context.closePath();
+			draw();
+		}
+		}
+		draw();
+
+	</script>
+	<?php
+	} else {
+		?><script>
+		let context = backface.getContext("2d");
+		context.canvas.width = window.innerWidth;
+		context.canvas.height = window.innerHeight;
+
+		/*function resize(){
+		context.canvas.width = window.innerWidth;
+		context.canvas.height = window.innerHeight;
+		draw();
+		}
+		window.addEventListener("resize", resize,false);*/
+
+		function getRandom(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+		function getDist(x1, y1, x2, y2) {
+		return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+		}
+		var count = 2000,
+			protection = 0,
+			circles = [],
+			width = 3;
+		while (circles.length < count) {
+		var circle = {
+			x: getRandom(1, backface.width),
+			y: getRandom(1, backface.height),
+			r: getRandom(2, 100),
+			h: getRandom(1, 255),
+			s: getRandom(1, 5),
+			d: getRandom(1, 2)
+		};
+		var overLapping = false;
+		for (var j = 0; j < circles.length; j++) {
+			var other = circles[j];
+			var d = getDist(circle.x, circle.y, other.x, other.y);
+			if (d < circle.r + other.r + width) {
+			overLapping = true;
+			break;
+			}
+		}
+		if (!overLapping) {
+			circles.push(circle);
+		}
+		protection++;
+
+		if (protection > 200000) {
+			break;
+		}
+		}
+		var i = -1;
+		function draw() {
+		i++;
+		if(i<circles.length){
+			context.beginPath();
+			context.arc(circles[i].x, circles[i].y, circles[i].r, 0, 2 * Math.PI);
+			context.lineWidth = width;
+			context.fillStyle = `hsl(${circles[i].h},100%,50%)`;
+			context.fill();
+			context.closePath();
+			requestAnimationFrame(draw);
+		}
+		}
+		requestAnimationFrame(draw);
+		</script>
 		<?php
 	}
 }

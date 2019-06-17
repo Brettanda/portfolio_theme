@@ -1,0 +1,20 @@
+@font-face {
+	font-family: 'Montserrat';
+	src: url('../fonts/Montserrat-Light.woff2') format('woff2'),
+	url('../fonts/Montserrat-Light.woff') format('woff'),
+	url('https://fonts.googleapis.com/css?family=Montserrat&display=auto');
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: local('Raleway'),
+	url('../fonts/Raleway-Regular.woff2') format('woff2'),
+	url('../fonts/Raleway-Regular.woff') format('woff'),
+	url('https://fonts.googleapis.com/css?family=Raleway&display=auto');
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+}
