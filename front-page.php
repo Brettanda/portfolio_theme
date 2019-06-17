@@ -1,18 +1,4 @@
 <?php get_header(); ?>
-<style>
-	#site-header{
-		height: 80vh;
-	}
-	.site-header-line {
-		top: 79.1vh;
-	}
-	#overlay{
-		opacity: 0;
-	}
-	.color-mode-switch::after {
-		/* top: 80vh; */
-	}
-</style>
 <style type="text/css">
 	.st0{fill:none;stroke:#FF0000;stroke-width:45;}
 </style>

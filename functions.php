@@ -29,13 +29,13 @@ add_theme_support( 'post-thumbnails' );
 function linked_assets(){
 	wp_enqueue_style( 'theme_info',   	get_stylesheet_uri());
 	// For free fonts go to https://fonts.google.com/
-	wp_enqueue_style( 'google-fonts',	'https://fonts.googleapis.com/css?family=Montserrat|Rajdhani');
+	// wp_enqueue_style( 'google-fonts',	'https://fonts.googleapis.com/css?family=Comfortaa:300|Montserrat&display=swap');
 	// wp_enqueue_style( 'normalize', 		get_stylesheet_directory_uri() . '/node_modules/normalize.css/normalize.css');
-	wp_enqueue_style( 'theme_styles',	get_stylesheet_directory_uri() . '/assets/compiled/style.min.css');
+	wp_enqueue_style( 'theme_styles',	get_stylesheet_directory_uri() . '/assets/dist/style.min.css');
 
-	wp_enqueue_script('delighers', 		get_stylesheet_directory_uri() . '/assets/modules/delighters.min.js');
-	wp_enqueue_script('animejs', 		get_stylesheet_directory_uri() . '/node_modules/animejs/lib/anime.min.js');
-	wp_enqueue_script('rellax', 		get_stylesheet_directory_uri() . '/node_modules/rellax/rellax.min.js');
+	// wp_enqueue_script('delighers', 		get_stylesheet_directory_uri() . '/assets/src/modules/delighters.min.js');
+	// wp_enqueue_script('animejs', 		get_stylesheet_directory_uri() . '/node_modules/animejs/lib/anime.min.js');
+	// wp_enqueue_script('rellax', 		get_stylesheet_directory_uri() . '/node_modules/rellax/rellax.min.js');
 	
 	// Jquery and the theme script can be found in the footer.php
 	// wp_enqueue_script('jquery', 		get_stylesheet_directory_uri() . '/node_modules/jquery/dist/jquery.min.js');

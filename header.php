@@ -6,7 +6,6 @@
 <meta name="theme-color" content="#000">
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
 <!-- Custom Theme Colors-->
 <?php function mytheme_customize_css(){?>
 <!-- <style type="text/css">
